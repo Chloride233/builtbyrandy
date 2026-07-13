@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CodePulse Pilot V1 Report</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    :root { color-scheme: light; --bg: #f8f8f5; --ink: #15181c; --muted: #4f5559; --line: #b8bbbd; --accent: #167d78; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { width: min(1100px, calc(100% - 40px)); margin: 64px auto; }
+    .eyebrow { margin: 0 0 18px; color: var(--accent); font: 600 12px/1.4 ui-monospace, monospace; letter-spacing: .08em; }
+    h1 { margin: 0; font: 600 clamp(36px, 6vw, 64px)/1.05 Georgia, serif; }
+    .meta, .note { color: var(--muted); }
+    .table-wrap { margin: 36px 0 24px; overflow-x: auto; border-top: 2px solid var(--ink); }
+    table { width: 100%; min-width: 880px; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 13px 10px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+    th { color: var(--muted); font: 600 11px/1.4 ui-monospace, monospace; letter-spacing: .04em; text-transform: uppercase; }
+    th:first-child, td:first-child, th:last-child, td:last-child { text-align: left; }
+    code { font: 13px/1.5 ui-monospace, monospace; }
+    @media (max-width: 700px) {
+      main { margin: 40px auto; }
+      .table-wrap { overflow: visible; }
+      table, tbody { display: block; min-width: 0; }
+      thead { display: none; }
+      tr { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); }
+      td, td:first-child, td:last-child {
+        display: grid;
+        grid-template-columns: 104px minmax(0, 1fr);
+        gap: 12px;
+        padding: 6px 0;
+        border: 0;
+        text-align: left;
+        overflow-wrap: anywhere;
+      }
+      td::before { content: attr(data-label); color: var(--muted); font: 600 11px/1.5 ui-monospace, monospace; text-transform: uppercase; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">CODEPULSE / FROZEN EVIDENCE</p>
+    <h1>Pilot V1 Report</h1>
+    <p class="meta">120 trials · Model version: <code>deepseek-v4-flash</code></p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Agent</th><th>pass@1</th><th>pass@3</th><th>pass^3</th><th>Avg tokens</th><th>Cost CNY (off / peak)</th><th>P50 / P95</th><th>Failures</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Agent"><code>deepseek-v4-flash-direct</code></td><td data-label="pass@1">96.7%</td><td data-label="pass@3">100.0%</td><td data-label="pass^3">90.0%</td><td data-label="Avg tokens">2,522.0</td><td data-label="Cost CNY">0.178410 / 0.356820</td><td data-label="P50 / P95">3.634s / 6.211s</td><td data-label="Failures"><code>success: 58<br>wrong_answer: 2</code></td></tr>
+          <tr><td data-label="Agent"><code>deepseek-v4-flash-iterative</code></td><td data-label="pass@1">100.0%</td><td data-label="pass@3">100.0%</td><td data-label="pass^3">100.0%</td><td data-label="Avg tokens">4,735.8</td><td data-label="Cost CNY">0.321042 / 0.642084</td><td data-label="P50 / P95">5.535s / 10.012s</td><td data-label="Failures"><code>success: 60</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Pricing schedule is pending; costs are reported as off-peak / peak bounds.</p>
+  </main>
+</body>
+</html>
