@@ -1,6 +1,7 @@
 (function () {
   var key = 'yuxuan-portfolio-language';
   var body = document.body;
+  var emailToastTimer;
   var iconMap = [
     ['.navset a[href*="#work"]', 'folder-open'],
     ['.navset a[href="about.html"]', 'circle-user-round'],
@@ -37,8 +38,55 @@
     renderIcons();
     try { localStorage.setItem(key, lang); } catch (_) {}
   }
+  function showEmailToast(copied) {
+    var toast = document.querySelector('[data-email-toast]');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'email-toast';
+      toast.setAttribute('data-email-toast', '');
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      body.appendChild(toast);
+    }
+    toast.textContent = copied
+      ? (body.dataset.uiLang === 'en' ? 'Email copied' : '邮箱已复制')
+      : 'tricloride808@gmail.com';
+    toast.classList.remove('is-visible');
+    requestAnimationFrame(function () { toast.classList.add('is-visible'); });
+    clearTimeout(emailToastTimer);
+    emailToastTimer = setTimeout(function () { toast.classList.remove('is-visible'); }, 2600);
+  }
+  function copyWithTextarea(text) {
+    var input = document.createElement('textarea');
+    var copied = false;
+    input.value = text;
+    input.setAttribute('readonly', '');
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    body.appendChild(input);
+    input.select();
+    try { copied = document.execCommand('copy'); } catch (_) {}
+    body.removeChild(input);
+    return copied;
+  }
+  function copyEmail(email) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email).then(
+        function () { showEmailToast(true); },
+        function () { showEmailToast(copyWithTextarea(email)); }
+      );
+      return;
+    }
+    showEmailToast(copyWithTextarea(email));
+  }
   document.querySelectorAll('[data-language-toggle]').forEach(function (button) {
     button.addEventListener('click', function () { setLanguage(body.dataset.uiLang === 'zh' ? 'en' : 'zh'); });
+  });
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var email = link.getAttribute('href').slice(7).split('?')[0];
+      copyEmail(decodeURIComponent(email));
+    });
   });
   try { setLanguage(localStorage.getItem(key) || 'zh'); } catch (_) { setLanguage('zh'); }
 })();

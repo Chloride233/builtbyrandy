@@ -105,6 +105,11 @@ body[data-ui-lang='zh'] .inline[data-lang='zh'], body[data-ui-lang='en'] .inline
 .capability-list { list-style: none; padding: 0; max-width: 800px; border-top: 1px solid var(--ink); }
 .capability-list li { display: grid; grid-template-columns: 170px 1fr; gap: 22px; padding: 16px 0; border-bottom: 1px solid var(--line); }
 .resume-note { color: var(--muted); font-size: 14px; }
+.email-toast { position: fixed; left: 50%; bottom: max(20px, env(safe-area-inset-bottom)); z-index: 100; max-width: calc(100% - 32px); padding: 10px 14px; border: 1px solid var(--ink); border-radius: 4px; background: var(--ink); color: var(--bg); opacity: 0; pointer-events: none; transform: translate(-50%, 12px); transition: opacity .18s ease, transform .18s ease; font: 500 12px/1.4 var(--font-mono); text-align: center; }
+.email-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) {
+  .email-toast { transition: none; }
+}
 @media (max-width: 760px) {
   .shell { width: min(100% - 32px, var(--measure)); }
   .topbar { min-height: 62px; }
