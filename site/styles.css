@@ -57,6 +57,15 @@ body[data-ui-lang='zh'] .inline[data-lang='zh'], body[data-ui-lang='en'] .inline
 .product-craft p { max-width: 48ch; color: var(--muted); }
 .screen-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-items: start; }
 .screen-strip img { width: 100%; border: 1px solid var(--line); display: block; }
+.exploration-entry { display: grid; grid-template-columns: 1.15fr .85fr; gap: 52px; align-items: start; padding: 32px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); }
+.exploration-copy .eyebrow { margin-bottom: 14px; }
+.exploration-copy h3 { max-width: 18ch; margin: 0; font: 590 34px/1.1 var(--font-display); letter-spacing: 0; }
+.exploration-copy > p:last-child { max-width: 55ch; margin: 18px 0 0; color: var(--muted); }
+.exploration-meta { display: grid; gap: 18px; padding-top: 2px; }
+.exploration-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.exploration-tags span { border: 1px solid var(--line); padding: 6px 8px; font: 500 11px/1.35 var(--font-mono); letter-spacing: .01em; }
+.exploration-link { display: inline-flex; align-items: center; gap: 7px; width: fit-content; color: var(--accent); font-weight: 600; }
+.exploration-note { margin: -8px 0 0; color: var(--muted); font-size: 13px; }
 .proof-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; }
 .bio { max-width: 58ch; margin: 0; font: 20px/1.55 var(--font-display); }
 .facts { border-top: 1px solid var(--ink); }
@@ -115,6 +124,8 @@ body[data-ui-lang='zh'] .inline[data-lang='zh'], body[data-ui-lang='en'] .inline
   .topbar { min-height: 62px; }
   .navset { gap: 12px; }
   .navset a:not(:last-of-type) { display: none; }
+  [data-od-id='site-navigation'] a[href='#explore'] { display: inline-flex; }
+  [data-od-id='site-navigation'] a[href^='mailto:'] { display: none; }
   .hero { min-height: min(690px, calc(100svh - 62px)); grid-template-columns: 1fr; align-items: start; gap: 34px; padding: 40px 0 30px; }
   .hero h1 { max-width: none; font-size: clamp(42px, 12vw, 58px); overflow-wrap: anywhere; }
   .hero .role { font-size: 18px; margin-top: 22px; }
@@ -128,6 +139,9 @@ body[data-ui-lang='zh'] .inline[data-lang='zh'], body[data-ui-lang='en'] .inline
   .project-craft, .proof-grid { grid-template-columns: 1fr; gap: 28px; }
   .product-craft { grid-template-columns: 1fr; gap: 28px; }
   .screen-strip { gap: 6px; }
+  .exploration-entry { grid-template-columns: 1fr; gap: 26px; padding: 26px 0; }
+  .exploration-copy h3 { max-width: none; font-size: 30px; overflow-wrap: anywhere; }
+  .exploration-meta { gap: 16px; }
   .fact, .capability-list li { grid-template-columns: 1fr; gap: 4px; }
   .case-hero { padding: 48px 0 32px; }
   .case-title { font-size: clamp(38px, 11vw, 54px); overflow-wrap: anywhere; }

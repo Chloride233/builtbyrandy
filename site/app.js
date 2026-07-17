@@ -4,12 +4,14 @@
   var emailToastTimer;
   var iconMap = [
     ['.navset a[href*="#work"]', 'folder-open'],
+    ['.navset a[href*="#explore"]', 'compass'],
     ['.navset a[href="about.html"]', 'circle-user-round'],
     ['.navset a[href^="mailto:"]', 'mail'],
     ['.action-list a[href="#work"]', 'arrow-down'],
     ['.action-list a[href*="github.com"]', 'github'],
     ['.action-list a[href^="mailto:"]', 'mail'],
     ['.action-list a[href$="aisleway.html"], .action-list a[href$="about.html#contact"]', 'arrow-up-right'],
+    ['.exploration-link', 'arrow-up-right'],
     ['.link-row a[href*="github.com"]', 'github'],
     ['.link-row a[href$="report.html"]', 'file-text'],
     ['.link-row a', 'arrow-up-right'],
